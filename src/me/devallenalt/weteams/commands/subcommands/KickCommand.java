@@ -1,0 +1,46 @@
+package me.devallenalt.weteams.commands.subcommands;
+
+import me.devallenalt.weteams.WeTeams;
+import me.devallenalt.weteams.models.Team;
+import org.bukkit.entity.Player;
+
+public class KickCommand implements SubCommand {
+
+    private final WeTeams plugin;
+
+    public KickCommand(WeTeams plugin) {
+        this.plugin = plugin;
+    }
+
+    @Override
+    public void execute(Player p, String[] args) {
+        if (args.length < 2) {
+            p.sendMessage(plugin.getPrefix() + "§cUsage: /team kick <player_name>");
+            return;
+        }
+
+        String targetName = args[1];
+        Player target = plugin.getServer().getPlayer(targetName);
+        
+        if (target == null) {
+            p.sendMessage(plugin.getPrefix() + "§cPlayer not found!");
+            return;
+        }
+
+        if (!plugin.getTeamManager().hasTeam(p)) {
+            p.sendMessage(plugin.getPrefix() + "§cYou are not in a team.");
+            return;
+        }
+
+        Team team = plugin.getTeamManager().getTeam(p);
+
+        if (team.getOwner() != p.getUniqueId()) {
+            p.sendMessage(plugin.getPrefix() + "§cOnly the team owner can kick members.");
+            return;
+        }
+
+        team.removeMember(target);
+        target.sendMessage(plugin.getPrefix() + "§cYou have been kicked from team " + team.getName() + ".");
+        p.sendMessage(plugin.getPrefix() + "§aYou kicked " + targetName + " from your team.");
+    }
+}
