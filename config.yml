@@ -1,0 +1,10 @@
+prefix: "&8[&bWeTeams&8]&r "
+messages:
+  team_created: "%prefix%&aTeam %team% created successfully!"
+  team_disbanded: "%prefix%&cYour team has been disbanded."
+  team_joined: "%prefix%&aYou joined team %team%!"
+  team_invited: "%prefix%&eYou invited &f%player% &eto your team."
+  no_permission: "%prefix%&cYou don’t have permission to do that!"
+  not_in_team: "%prefix%&cYou’re not in a team."
+  already_in_team: "%prefix%&cYou’re already in a team."
+  team_not_found: "%prefix%&cTeam not found."
