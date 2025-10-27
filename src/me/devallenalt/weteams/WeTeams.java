@@ -14,12 +14,18 @@ public class WeTeams extends JavaPlugin {
     public void onEnable() {
         instance = this;
         saveDefaultConfig();
-
         teamManager = new TeamManager(this);
-        getCommand("team").setExecutor(new TeamCommand(this));
 
-        getLogger().info("WeTeams v1.0.0 enabled!");
+        // Register Commands
+        registerCommands();
+
+        getlogger().info("WeTeam v1.0.0 enabled!");
     }
+
+    private void registerCommands() {
+        // Register each subcommand under /team
+        getCommand("team").setExecutor(new TeamCommand(this));
+    {
 
     @Override
     public void onDisable() {
