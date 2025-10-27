@@ -1,10 +1,19 @@
-name: WeTeams
-main: me.devallenalt.weteams.WeTeams
-version: 1.0.0
-api-version: 1.20
-author: dev_allenalt_tw
-commands:
-  team:
-    description: Main team command
-    usage: /team <subcommand>
-    aliases: [teams, weteams]
+permissions:
+  weteams.create:
+    description: Allows creation of teams
+    default: true
+  weteams.invite:
+    description: Allows inviting players to the team
+    default: op
+  weteams.kick:
+    description: Allows kicking members from the team
+    default: op
+  weteams.disband:
+    description: Allows disbanding the team
+    default: op
+  weteams.bal:
+    description: Allows viewing team balance
+    default: true
+  weteams.chat:
+    description: Allows toggling team chat
+    default: true
